@@ -52,13 +52,53 @@
 		DDFE6A952A8A41040003C518 /* SparTest */ = {
 			isa = PBXGroup;
 			children = (
-				DDFE6A962A8A41040003C518 /* AppDelegate.swift */,
-				DDFE6A9A2A8A41040003C518 /* ViewController.swift */,
-				DDFE6A9F2A8A41050003C518 /* Assets.xcassets */,
-				DDFE6AA12A8A41050003C518 /* LaunchScreen.storyboard */,
-				DDFE6AA42A8A41050003C518 /* Info.plist */,
+				DDFE6AAA2A8A44BD0003C518 /* Sources */,
+				DDFE6AAB2A8A44C20003C518 /* Resources */,
 			);
 			path = SparTest;
+			sourceTree = "<group>";
+		};
+		DDFE6AAA2A8A44BD0003C518 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				DDFE6AAE2A8A44F70003C518 /* Application */,
+				DDFE6AAC2A8A44DF0003C518 /* Scenes */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		DDFE6AAB2A8A44C20003C518 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DDFE6AA42A8A41050003C518 /* Info.plist */,
+				DDFE6A9F2A8A41050003C518 /* Assets.xcassets */,
+				DDFE6AA12A8A41050003C518 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		DDFE6AAC2A8A44DF0003C518 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				DDFE6AAD2A8A44E60003C518 /* Main */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		DDFE6AAD2A8A44E60003C518 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				DDFE6A9A2A8A41040003C518 /* ViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		DDFE6AAE2A8A44F70003C518 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				DDFE6A962A8A41040003C518 /* AppDelegate.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
