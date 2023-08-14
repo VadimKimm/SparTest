@@ -8,18 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		DDFE6A972A8A41040003C518 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFE6A962A8A41040003C518 /* AppDelegate.swift */; };
-		DDFE6A9B2A8A41040003C518 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFE6A9A2A8A41040003C518 /* ViewController.swift */; };
+		DDFE6A9B2A8A41040003C518 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFE6A9A2A8A41040003C518 /* MainViewController.swift */; };
 		DDFE6AA02A8A41050003C518 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDFE6A9F2A8A41050003C518 /* Assets.xcassets */; };
 		DDFE6AA32A8A41050003C518 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDFE6AA12A8A41050003C518 /* LaunchScreen.storyboard */; };
+		DDFE6AB12A8A464E0003C518 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFE6AB02A8A464E0003C518 /* TabBarController.swift */; };
+		DDFE6AB52A8A48120003C518 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFE6AB42A8A48120003C518 /* UIViewController+Ext.swift */; };
+		DDFE6ABB2A8A4EAC0003C518 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFE6ABA2A8A4EAC0003C518 /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DDFE6A932A8A41040003C518 /* SparTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SparTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDFE6A962A8A41040003C518 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DDFE6A9A2A8A41040003C518 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DDFE6A9A2A8A41040003C518 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		DDFE6A9F2A8A41050003C518 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DDFE6AA22A8A41050003C518 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DDFE6AA42A8A41050003C518 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DDFE6AB02A8A464E0003C518 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		DDFE6AB42A8A48120003C518 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		DDFE6ABA2A8A4EAC0003C518 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				DDFE6AAE2A8A44F70003C518 /* Application */,
+				DDFE6AB22A8A47FD0003C518 /* Common */,
 				DDFE6AAC2A8A44DF0003C518 /* Scenes */,
 			);
 			path = Sources;
@@ -73,6 +80,7 @@
 				DDFE6AA42A8A41050003C518 /* Info.plist */,
 				DDFE6A9F2A8A41050003C518 /* Assets.xcassets */,
 				DDFE6AA12A8A41050003C518 /* LaunchScreen.storyboard */,
+				DDFE6ABA2A8A4EAC0003C518 /* Colors.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -80,6 +88,7 @@
 		DDFE6AAC2A8A44DF0003C518 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				DDFE6AAF2A8A46250003C518 /* TabBar */,
 				DDFE6AAD2A8A44E60003C518 /* Main */,
 			);
 			path = Scenes;
@@ -88,7 +97,7 @@
 		DDFE6AAD2A8A44E60003C518 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				DDFE6A9A2A8A41040003C518 /* ViewController.swift */,
+				DDFE6A9A2A8A41040003C518 /* MainViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -99,6 +108,30 @@
 				DDFE6A962A8A41040003C518 /* AppDelegate.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		DDFE6AAF2A8A46250003C518 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				DDFE6AB02A8A464E0003C518 /* TabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		DDFE6AB22A8A47FD0003C518 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				DDFE6AB32A8A48050003C518 /* Extensions */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		DDFE6AB32A8A48050003C518 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DDFE6AB42A8A48120003C518 /* UIViewController+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,7 +204,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDFE6A9B2A8A41040003C518 /* ViewController.swift in Sources */,
+				DDFE6AB12A8A464E0003C518 /* TabBarController.swift in Sources */,
+				DDFE6ABB2A8A4EAC0003C518 /* Colors.swift in Sources */,
+				DDFE6A9B2A8A41040003C518 /* MainViewController.swift in Sources */,
+				DDFE6AB52A8A48120003C518 /* UIViewController+Ext.swift in Sources */,
 				DDFE6A972A8A41040003C518 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,7 +349,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7CZSM4DJ6N;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SparTest/Info.plist;
+				INFOPLIST_FILE = SparTest/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -344,7 +380,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7CZSM4DJ6N;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SparTest/Info.plist;
+				INFOPLIST_FILE = SparTest/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
