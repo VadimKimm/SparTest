@@ -9,6 +9,10 @@ import UIKit
 
 final class MainViewController: UIViewController {
 
+    // MARK: - Properties
+
+    var adapter: MainCollectionViewAdapter?
+
     private lazy var customView: MainView = {
         let customView = MainView()
         return customView
@@ -18,5 +22,15 @@ final class MainViewController: UIViewController {
 
     override func loadView() {
         self.view = customView
+    }
+
+    override func viewDidLoad() {
+        setupCollectionViewAdapter()
+    }
+
+    // MARK: - Settings
+
+    func setupCollectionViewAdapter() {
+        adapter = MainCollectionViewAdapter(collectionView: customView.collectionView)
     }
 }
