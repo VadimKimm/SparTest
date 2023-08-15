@@ -9,77 +9,75 @@ import UIKit
 
 final class TabBarController: UITabBarController {
 
-    // MARK: - Properties
+    enum TabBarItem: Int {
+        case main
+        case catalog
+        case cart
+        case profile
 
-    private var mainViewController: UIViewController?
-    private var catalogViewController: UIViewController?
-    private var cartViewController: UIViewController?
-    private var profileViewController: UIViewController?
+        var title: String {
+            switch self {
+            case .main: return "Главная"
+            case .catalog: return "Каталог"
+            case .cart: return "Корзина"
+            case .profile: return "Профиль"
+            }
+        }
+
+        var imageName: String {
+            switch self {
+            case .main: return "hexagon"
+            case .catalog: return "square.grid.2x2"
+            case .cart: return "cart"
+            case .profile: return "person"
+            }
+        }
+
+        var selectedImageName: String {
+            switch self {
+            case .main: return "hexagon.fill"
+            case .catalog: return "square.grid.2x2.fill"
+            case .cart: return "cart.fill"
+            case .profile: return "person.fill"
+            }
+        }
+    }
 
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupHierarchy()
-        setupView()
-    }
-
-    // MARK: - Settings
-
-    private func setupHierarchy() {
-        setupViewControllers()
-
-        let viewControllers = [
-            mainViewController,
-            catalogViewController,
-            cartViewController,
-            profileViewController
-        ]
-
-        setViewControllers(
-            viewControllers.map { UINavigationController(rootViewController: $0 ?? UIViewController()) },
-            animated: false
-        )
-    }
-
-    private func setupView() {
+        setupTabBar()
         setupTabBarAppearance()
     }
 
     // MARK: - Private functions
 
-    private func setupViewControllers() {
-        mainViewController = MainViewController()
-        mainViewController?.setupTabBar(
-            title: "Главная",
-            imageName: "hexagon",
-            selectedImageName: "hexagon.fill",
-            tag: 0
-        )
+    private func setupTabBar() {
+        let tabBarItems: [TabBarItem] = [.main, .catalog, .cart, .profile]
 
-        catalogViewController = UIViewController()
-        catalogViewController?.setupTabBar(
-            title: "Каталог",
-            imageName: "square.grid.2x2",
-            selectedImageName: "square.grid.2x2.fill",
-            tag: 1
-        )
+        viewControllers = tabBarItems.map {
+            switch $0 {
+            case .main:
+                let viewController = MainViewController()
+                return wrappedInNavigationController(with: viewController)
+            case .catalog:
+                let viewController = createBlankViewController()
+                return wrappedInNavigationController(with: viewController)
+            case .cart:
+                let viewController = createBlankViewController()
+                return wrappedInNavigationController(with: viewController)
+            case .profile:
+                let viewController = createBlankViewController()
+                return wrappedInNavigationController(with: viewController)
+            }
+        }
 
-        cartViewController = UIViewController()
-        cartViewController?.setupTabBar(
-            title: "Корзина",
-            imageName: "cart",
-            selectedImageName: "cart.fill",
-            tag: 2
-        )
-
-        profileViewController = UIViewController()
-        profileViewController?.setupTabBar(
-            title: "Профиль",
-            imageName: "person",
-            selectedImageName: "person.fill",
-            tag: 3
-        )
+        viewControllers?.enumerated().forEach {
+            $1.tabBarItem.title = tabBarItems[$0].title
+            $1.tabBarItem.image = UIImage(systemName: tabBarItems[$0].imageName)
+            $1.tabBarItem.selectedImage = UIImage(systemName: tabBarItems[$0].selectedImageName)
+        }
     }
 
     private func setupTabBarAppearance() {
@@ -91,5 +89,17 @@ final class TabBarController: UITabBarController {
 
         tabBar.tintColor = Colors.green.color
         tabBar.unselectedItemTintColor = Colors.darkGray.color
+    }
+}
+
+private extension TabBarController {
+    func wrappedInNavigationController(with viewController: UIViewController) -> UINavigationController {
+        UINavigationController(rootViewController: viewController)
+    }
+
+    func createBlankViewController() -> UIViewController {
+        let viewController = UIViewController()
+        viewController.view.backgroundColor = Colors.white.color
+        return viewController
     }
 }

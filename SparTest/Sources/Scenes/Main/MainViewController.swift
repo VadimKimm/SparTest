@@ -7,17 +7,16 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupView()
+    private lazy var customView: MainView = {
+        let customView = MainView()
+        return customView
+    }()
+
+    // MARK: - Lifecycle
+
+    override func loadView() {
+        self.view = customView
     }
-
-    private func setupView() {
-        navigationController?.title = "213"
-    }
-
-
 }
-

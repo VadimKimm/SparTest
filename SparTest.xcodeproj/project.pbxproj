@@ -12,8 +12,9 @@
 		DDFE6AA02A8A41050003C518 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDFE6A9F2A8A41050003C518 /* Assets.xcassets */; };
 		DDFE6AA32A8A41050003C518 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDFE6AA12A8A41050003C518 /* LaunchScreen.storyboard */; };
 		DDFE6AB12A8A464E0003C518 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFE6AB02A8A464E0003C518 /* TabBarController.swift */; };
-		DDFE6AB52A8A48120003C518 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFE6AB42A8A48120003C518 /* UIViewController+Ext.swift */; };
 		DDFE6ABB2A8A4EAC0003C518 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFE6ABA2A8A4EAC0003C518 /* Colors.swift */; };
+		DDFE6ABE2A8A53BF0003C518 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFE6ABD2A8A53BF0003C518 /* CustomNavigationBar.swift */; };
+		DDFE6AC02A8A73B80003C518 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFE6ABF2A8A73B80003C518 /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,8 +25,9 @@
 		DDFE6AA22A8A41050003C518 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DDFE6AA42A8A41050003C518 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DDFE6AB02A8A464E0003C518 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		DDFE6AB42A8A48120003C518 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		DDFE6ABA2A8A4EAC0003C518 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		DDFE6ABD2A8A53BF0003C518 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
+		DDFE6ABF2A8A73B80003C518 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +70,6 @@
 			isa = PBXGroup;
 			children = (
 				DDFE6AAE2A8A44F70003C518 /* Application */,
-				DDFE6AB22A8A47FD0003C518 /* Common */,
 				DDFE6AAC2A8A44DF0003C518 /* Scenes */,
 			);
 			path = Sources;
@@ -97,7 +98,9 @@
 		DDFE6AAD2A8A44E60003C518 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				DDFE6ABC2A8A539D0003C518 /* SupportViews */,
 				DDFE6A9A2A8A41040003C518 /* MainViewController.swift */,
+				DDFE6ABF2A8A73B80003C518 /* MainView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -118,20 +121,12 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
-		DDFE6AB22A8A47FD0003C518 /* Common */ = {
+		DDFE6ABC2A8A539D0003C518 /* SupportViews */ = {
 			isa = PBXGroup;
 			children = (
-				DDFE6AB32A8A48050003C518 /* Extensions */,
+				DDFE6ABD2A8A53BF0003C518 /* CustomNavigationBar.swift */,
 			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		DDFE6AB32A8A48050003C518 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				DDFE6AB42A8A48120003C518 /* UIViewController+Ext.swift */,
-			);
-			path = Extensions;
+			path = SupportViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,10 +199,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDFE6ABE2A8A53BF0003C518 /* CustomNavigationBar.swift in Sources */,
+				DDFE6AC02A8A73B80003C518 /* MainView.swift in Sources */,
 				DDFE6AB12A8A464E0003C518 /* TabBarController.swift in Sources */,
 				DDFE6ABB2A8A4EAC0003C518 /* Colors.swift in Sources */,
 				DDFE6A9B2A8A41040003C518 /* MainViewController.swift in Sources */,
-				DDFE6AB52A8A48120003C518 /* UIViewController+Ext.swift in Sources */,
 				DDFE6A972A8A41040003C518 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
