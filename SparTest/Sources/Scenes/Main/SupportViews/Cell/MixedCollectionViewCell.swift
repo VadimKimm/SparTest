@@ -11,17 +11,9 @@ final class MixedCollectionViewCell: BaseCollectionViewCell {
 
     // MARK: - Configuration
 
-    func configure(with model: BonusModel) {
-        let value = model.value
-        let bonusText = getBonusString(of: value)
-        let text = "\(value) \(bonusText)"
-        let attributedString = NSMutableAttributedString(string: text)
-        let rangeOfSecondPart = (text as NSString).range(of: bonusText)
-        let fontForSecondPart = UIFont.systemFont(ofSize: 18, weight: .bold)
-        attributedString.addAttribute(NSAttributedString.Key.font, value: fontForSecondPart, range: rangeOfSecondPart)
-
+    func configure(with model: MixModel) {
         imageView.image = UIImage(named: model.image)
-        titleLabel.attributedText = attributedString
+        titleLabel.text = model.title
     }
 
     //MARK: - Properties
@@ -30,7 +22,11 @@ final class MixedCollectionViewCell: BaseCollectionViewCell {
 
     // MARK: - Views
 
-    private var titleLabel = UILabel()
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 2
+        return label
+    }()
 
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
@@ -58,27 +54,17 @@ final class MixedCollectionViewCell: BaseCollectionViewCell {
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.titleLabelLeftOffset)
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: Metrics.titleLabelTopOffset),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.titleLabelSideOffset),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.titleLabelSideOffset)
         ])
     }
 
     override func setupView() {
         imageView.layer.cornerRadius = Metrics.cornerRadius
 
-        titleLabel.font = .systemFont(ofSize: 35, weight: .bold)
+        titleLabel.font = .systemFont(ofSize: 14, weight: .medium)
         titleLabel.textColor = Colors.black.color
-    }
-}
-
-
-private extension MixedCollectionViewCell {
-    func getBonusString(of value: Int) -> String {
-        switch value % 10 {
-        case 1: return "бонус"
-        case 2...4: return "бонуса"
-        default: return "бонусов"
-        }
     }
 }
 
@@ -87,7 +73,7 @@ private extension MixedCollectionViewCell {
 private extension MixedCollectionViewCell {
     enum Metrics {
         static let cornerRadius: CGFloat = 15
-        static let titleLabelLeftOffset: CGFloat = 15
+        static let titleLabelTopOffset: CGFloat = 10
+        static let titleLabelSideOffset: CGFloat = 5
     }
 }
-

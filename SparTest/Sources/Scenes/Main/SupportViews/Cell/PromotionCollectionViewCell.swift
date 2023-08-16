@@ -15,10 +15,6 @@ final class PromotionCollectionViewCell: BaseCollectionViewCell {
         imageView.image = UIImage(named: model.image)
     }
 
-    func configure(with model: BonusModel) {
-        imageView.image = UIImage(named: model.image)
-    }
-
     //MARK: - Properties
 
     static let identifier = String(describing: PromotionCollectionViewCell.self)
@@ -60,4 +56,3 @@ private extension PromotionCollectionViewCell {
         static let cornerRadius: CGFloat = 15
     }
 }
-

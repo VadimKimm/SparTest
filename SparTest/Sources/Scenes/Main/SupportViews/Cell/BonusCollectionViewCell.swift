@@ -15,13 +15,13 @@ final class BonusCollectionViewCell: BaseCollectionViewCell {
         let value = model.value
         let bonusText = getBonusString(of: value)
         let text = "\(value) \(bonusText)"
-        let attributedString = NSMutableAttributedString(string: text)
+        let attributedText = NSMutableAttributedString(string: text)
         let rangeOfSecondPart = (text as NSString).range(of: bonusText)
         let fontForSecondPart = UIFont.systemFont(ofSize: 18, weight: .bold)
-        attributedString.addAttribute(NSAttributedString.Key.font, value: fontForSecondPart, range: rangeOfSecondPart)
+        attributedText.addAttribute(NSAttributedString.Key.font, value: fontForSecondPart, range: rangeOfSecondPart)
 
         imageView.image = UIImage(named: model.image)
-        titleLabel.attributedText = attributedString
+        titleLabel.attributedText = attributedText
     }
 
     //MARK: - Properties

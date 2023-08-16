@@ -13,7 +13,7 @@ final class MainCollectionViewAdapter: NSObject {
         case stories
         case promotions
         case bonus
-//        case mixed
+        case mixed
 //        case recommendations
 //        case sweetMood
     }
@@ -47,6 +47,10 @@ final class MainCollectionViewAdapter: NSObject {
             BonusCollectionViewCell.self,
             forCellWithReuseIdentifier: BonusCollectionViewCell.identifier
         )
+        collectionView.register(
+            MixedCollectionViewCell.self,
+            forCellWithReuseIdentifier: MixedCollectionViewCell.identifier
+        )
     }
 }
 
@@ -59,12 +63,10 @@ extension MainCollectionViewAdapter: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch  Sections.allCases[section] {
-        case .stories:
-            return StoryModel.createMockData().count
-        case .promotions:
-            return 100
-        case .bonus:
-            return 1
+        case .stories: return StoryModel.createMockData().count
+        case .promotions: return 100
+        case .bonus: return 1
+        case .mixed: return MixModel.createMockData().count
         }
     }
 
@@ -93,6 +95,14 @@ extension MainCollectionViewAdapter: UICollectionViewDataSource {
             ) as? BonusCollectionViewCell else { return UICollectionViewCell() }
             let datasourse = BonusModel.createMockData()
             cell.configure(with: datasourse)
+            return cell
+        case .mixed:
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: MixedCollectionViewCell.identifier,
+                for: indexPath
+            ) as? MixedCollectionViewCell else { return UICollectionViewCell() }
+            let datasourse = MixModel.createMockData()
+            cell.configure(with: datasourse[indexPath.row])
             return cell
         }
     }

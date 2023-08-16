@@ -29,4 +29,18 @@ enum Images {
         case promotionSeven
         case promotionEight
     }
+
+    enum Mix: String {
+        case mixOne
+        case mixTwo
+        case mixThree
+        case mixFour
+        case mixFive
+        case mixSix
+        case mixSeven
+        case mixEight
+        case mixNine
+        case mixTen
+        case mixEleven
+    }
 }
