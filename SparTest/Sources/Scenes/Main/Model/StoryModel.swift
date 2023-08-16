@@ -15,7 +15,7 @@ struct StoryModel {
 extension StoryModel {
     static func createMockData() -> [StoryModel] {
         [
-            StoryModel(title: "Привелегии 'Мой SPAR'", image: Images.Story.storyOne.rawValue),
+            StoryModel(title: "Привелегии \"Мой SPAR\"", image: Images.Story.storyOne.rawValue),
             StoryModel(title: "Мы в соцсетях", image: Images.Story.storyTwo.rawValue),
             StoryModel(title: "KLERN", image: Images.Story.storyThree.rawValue),
             StoryModel(title: "Медовый спас", image: Images.Story.storyFour.rawValue),

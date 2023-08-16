@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class StoryCollectionViewCell: UICollectionViewCell {
+final class StoryCollectionViewCell: BaseCollectionViewCell {
 
     // MARK: - Configuration
 
@@ -41,31 +41,14 @@ final class StoryCollectionViewCell: UICollectionViewCell {
 
     // MARK: - Settings
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        commonInit()
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    private func commonInit() {
-        setupHierarchy()
-        setupLayout()
-        setupView()
-    }
-
-    // MARK: - Private functions
-
-    private func setupHierarchy() {
+    override func setupHierarchy() {
         addSubview(circleView)
         addSubview(titleLabel)
 
         circleView.addSubview(imageView)
     }
 
-    private func setupLayout() {
+    override func setupLayout() {
         circleView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             circleView.topAnchor.constraint(equalTo: topAnchor),
@@ -91,7 +74,7 @@ final class StoryCollectionViewCell: UICollectionViewCell {
         ])
     }
 
-    private func setupView() {
+    override func setupView() {
         circleView.backgroundColor = .white
         circleView.layer.borderWidth = 2
         circleView.layer.borderColor = Colors.green.cgColor
@@ -106,7 +89,7 @@ final class StoryCollectionViewCell: UICollectionViewCell {
 
 // MARK: - Metrics
 
-extension StoryCollectionViewCell {
+private extension StoryCollectionViewCell {
     enum Metrics {
         static let circleViewHeightOffset: CGFloat = -25
         static let imageViewHeightOffset: CGFloat = -2

@@ -9,6 +9,15 @@ import UIKit
 
 final class MainCollectionViewAdapter: NSObject {
 
+    public enum Sections: CaseIterable {
+        case stories
+        case promotions
+        case bonus
+//        case mixed
+//        case recommendations
+//        case sweetMood
+    }
+
     // MARK: - Properties
 
     private var collectionView: UICollectionView
@@ -21,12 +30,6 @@ final class MainCollectionViewAdapter: NSObject {
         setupCollection()
     }
 
-    // MARK: - Internal methods
-
-    func configure() {
-        collectionView.reloadData()
-    }
-
     // MARK: - Private methods
 
     private func setupCollection() {
@@ -36,30 +39,61 @@ final class MainCollectionViewAdapter: NSObject {
             StoryCollectionViewCell.self,
             forCellWithReuseIdentifier: StoryCollectionViewCell.identifier
         )
+        collectionView.register(
+            PromotionCollectionViewCell.self,
+            forCellWithReuseIdentifier: PromotionCollectionViewCell.identifier
+        )
+        collectionView.register(
+            BonusCollectionViewCell.self,
+            forCellWithReuseIdentifier: BonusCollectionViewCell.identifier
+        )
     }
 }
 
+// MARK: - UICollectionViewDataSource
+
 extension MainCollectionViewAdapter: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        Sections.allCases.count
+    }
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch section {
-        case 0:
+        switch  Sections.allCases[section] {
+        case .stories:
             return StoryModel.createMockData().count
-        default:
-            return 0
+        case .promotions:
+            return 100
+        case .bonus:
+            return 1
         }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch indexPath.section {
-        case 0:
+        switch Sections.allCases[indexPath.section] {
+        case .stories:
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: StoryCollectionViewCell.identifier,
                 for: indexPath
             ) as? StoryCollectionViewCell else { return UICollectionViewCell() }
-            cell.configure(with: StoryModel.createMockData()[indexPath.row])
+            let datasourse = StoryModel.createMockData()
+            cell.configure(with: datasourse[indexPath.row])
             return cell
-        default:
-            return UICollectionViewCell()
+        case .promotions:
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: PromotionCollectionViewCell.identifier,
+                for: indexPath
+            ) as? PromotionCollectionViewCell else { return UICollectionViewCell() }
+            let datasourse = PromotionModel.createMockData()
+            cell.configure(with: datasourse[indexPath.row % datasourse.count])
+            return cell
+        case .bonus:
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: BonusCollectionViewCell.identifier,
+                for: indexPath
+            ) as? BonusCollectionViewCell else { return UICollectionViewCell() }
+            let datasourse = BonusModel.createMockData()
+            cell.configure(with: datasourse)
+            return cell
         }
     }
 }

@@ -18,4 +18,15 @@ enum Images {
         case storySeven
         case storyEight
     }
+
+    enum Promotion: String {
+        case promotionOne
+        case promotionTwo
+        case promotionThree
+        case promotionFour
+        case promotionFive
+        case promotionSix
+        case promotionSeven
+        case promotionEight
+    }
 }
