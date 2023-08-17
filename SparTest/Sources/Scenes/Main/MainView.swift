@@ -65,6 +65,7 @@ final class MainView: UIView {
 
     private func setupView() {
         backgroundColor = Colors.white.color
+        collectionView.backgroundColor = Colors.white.color
     }
 }
 

@@ -55,10 +55,10 @@ final class LayoutHandler {
         item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
 
         let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(0.9),
+            widthDimension: .fractionalWidth(0.88),
             heightDimension: .fractionalHeight(0.22)
         )
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
 
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
@@ -100,17 +100,17 @@ final class LayoutHandler {
 
     private static func createMixedLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(0.3),
+            widthDimension: .fractionalWidth(0.33),
             heightDimension: .fractionalHeight(1)
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
 
         let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(0.9),
-            heightDimension: .fractionalHeight(0.18)
+            widthDimension: .fractionalWidth(0.88),
+            heightDimension: .fractionalHeight(0.19)
         )
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
 
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous

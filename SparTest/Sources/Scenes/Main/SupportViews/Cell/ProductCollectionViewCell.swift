@@ -1,13 +1,14 @@
 //
-//  MixedCollectionViewCell.swift
+//  ProductCollectionViewCell.swift
 //  SparTest
 //
 //  Created by Vadim Kim on 16.08.2023.
 //
 
+
 import UIKit
 
-final class MixedCollectionViewCell: BaseCollectionViewCell {
+final class ProductCollectionViewCell: BaseCollectionViewCell {
 
     // MARK: - Configuration
 
@@ -18,7 +19,7 @@ final class MixedCollectionViewCell: BaseCollectionViewCell {
 
     //MARK: - Properties
 
-    static let identifier = String(describing: MixedCollectionViewCell.self)
+    static let identifier = String(describing: ProductCollectionViewCell.self)
 
     // MARK: - Views
 
@@ -70,9 +71,10 @@ final class MixedCollectionViewCell: BaseCollectionViewCell {
 
 // MARK: - Metrics
 
-private extension MixedCollectionViewCell {
+private extension ProductCollectionViewCell {
     enum Metrics {
         static let cornerRadius: CGFloat = 15
         static let titleLabelOffset: CGFloat = 10
     }
 }
+
