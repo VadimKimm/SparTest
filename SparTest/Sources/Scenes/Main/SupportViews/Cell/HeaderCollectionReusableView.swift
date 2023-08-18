@@ -9,6 +9,16 @@ import UIKit
 
 final class HeaderCollectionReusableView: UICollectionReusableView {
 
+    // MARK: - Configuration
+
+    func configure(with text: String) {
+        titleLabel.text = text
+    }
+
+    //MARK: - Properties
+
+    static let identifier = String(describing: HeaderCollectionReusableView.self)
+
     // MARK: - Views
 
     private let titleLabel = UILabel()
@@ -37,7 +47,16 @@ final class HeaderCollectionReusableView: UICollectionReusableView {
         addSubview(titleLabel)
     }
 
-    private func setupLayout() {}
+    private func setupLayout() {
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: topAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor)
+        ])
+    }
 
-    private func setupView() {}
+    private func setupView() {
+        titleLabel.font = .systemFont(ofSize: 18, weight: .bold)
+        titleLabel.textColor = Colors.black.color
+    }
 }

@@ -9,18 +9,10 @@ import UIKit
 
 final class MainCollectionViewAdapter: NSObject {
 
-    public enum Sections: CaseIterable {
-        case stories
-        case promotions
-        case bonus
-        case mixed
-//        case recommendations
-//        case sweetMood
-    }
-
     // MARK: - Properties
 
     private var collectionView: UICollectionView
+    private var dataSource: [MainSectionType: Any] = [:]
 
     // MARK: - Initialization
 
@@ -28,6 +20,13 @@ final class MainCollectionViewAdapter: NSObject {
         self.collectionView = collectionView
         super.init()
         setupCollection()
+    }
+
+    // MARK: - Configuration
+
+    func configure(with dataSource: [MainSectionType: Any]) {
+        self.dataSource = dataSource
+        collectionView.reloadData()
     }
 
     // MARK: - Private methods
@@ -51,6 +50,15 @@ final class MainCollectionViewAdapter: NSObject {
             MixedCollectionViewCell.self,
             forCellWithReuseIdentifier: MixedCollectionViewCell.identifier
         )
+        collectionView.register(
+            ProductCollectionViewCell.self,
+            forCellWithReuseIdentifier: ProductCollectionViewCell.identifier
+        )
+        collectionView.register(
+            HeaderCollectionReusableView.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: HeaderCollectionReusableView.identifier
+        )
     }
 }
 
@@ -58,52 +66,100 @@ final class MainCollectionViewAdapter: NSObject {
 
 extension MainCollectionViewAdapter: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        Sections.allCases.count
+        MainSectionType.allCases.count
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch  Sections.allCases[section] {
-        case .stories: return StoryModel.createMockData().count
-        case .promotions: return 100
+        switch  MainSectionType.allCases[section] {
+        case .stories:
+            guard let dataSourse = dataSource[.stories] as? [StoryModel] else { return 0 }
+            return dataSourse.count
+        case .mixed:
+            guard let dataSourse = dataSource[.mixed] as? [MixModel] else { return 0 }
+            return dataSourse.count
         case .bonus: return 1
-        case .mixed: return MixModel.createMockData().count
+        case .promotions, .recommendations, .sweetMood: return 100
         }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch Sections.allCases[indexPath.section] {
+        switch MainSectionType.allCases[indexPath.section] {
         case .stories:
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: StoryCollectionViewCell.identifier,
                 for: indexPath
-            ) as? StoryCollectionViewCell else { return UICollectionViewCell() }
-            let datasourse = StoryModel.createMockData()
-            cell.configure(with: datasourse[indexPath.row])
+            ) as? StoryCollectionViewCell,
+                  let dataSourse = dataSource[.stories] as? [StoryModel]
+            else { return UICollectionViewCell() }
+            cell.configure(with: dataSourse[indexPath.row])
             return cell
         case .promotions:
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: PromotionCollectionViewCell.identifier,
                 for: indexPath
-            ) as? PromotionCollectionViewCell else { return UICollectionViewCell() }
-            let datasourse = PromotionModel.createMockData()
-            cell.configure(with: datasourse[indexPath.row % datasourse.count])
+            ) as? PromotionCollectionViewCell,
+                  let dataSourse = dataSource[.promotions] as? [PromotionModel]
+            else { return UICollectionViewCell() }
+            cell.configure(with: dataSourse[indexPath.row % dataSourse.count])
             return cell
         case .bonus:
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: BonusCollectionViewCell.identifier,
                 for: indexPath
-            ) as? BonusCollectionViewCell else { return UICollectionViewCell() }
-            let datasourse = BonusModel.createMockData()
-            cell.configure(with: datasourse)
+            ) as? BonusCollectionViewCell,
+                  let dataSourse = dataSource[.bonus] as? [BonusModel]
+            else { return UICollectionViewCell() }
+            cell.configure(with: dataSourse[indexPath.row])
             return cell
         case .mixed:
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: MixedCollectionViewCell.identifier,
                 for: indexPath
-            ) as? MixedCollectionViewCell else { return UICollectionViewCell() }
-            let datasourse = MixModel.createMockData()
-            cell.configure(with: datasourse[indexPath.row])
+            ) as? MixedCollectionViewCell,
+                  let dataSourse = dataSource[.mixed] as? [MixModel]
+            else { return UICollectionViewCell() }
+            cell.configure(with: dataSourse[indexPath.row])
             return cell
+        case .recommendations:
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: ProductCollectionViewCell.identifier,
+                for: indexPath
+            ) as? ProductCollectionViewCell,
+                  let dataSourse = dataSource[.recommendations] as? [ProductModel]
+            else { return UICollectionViewCell() }
+            cell.configure(with: dataSourse[indexPath.row % dataSourse.count])
+            return cell
+        case .sweetMood:
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: ProductCollectionViewCell.identifier,
+                for: indexPath
+            ) as? ProductCollectionViewCell,
+                  let dataSourse = dataSource[.sweetMood] as? [ProductModel]
+            else { return UICollectionViewCell() }
+            cell.configure(with: dataSourse[indexPath.row % dataSourse.count])
+            return cell
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch MainSectionType.allCases[indexPath.section] {
+        case .recommendations:
+            guard let header = collectionView.dequeueReusableSupplementaryView(
+                ofKind: UICollectionView.elementKindSectionHeader,
+                withReuseIdentifier: HeaderCollectionReusableView.identifier,
+                for: indexPath
+            ) as? HeaderCollectionReusableView else { return UICollectionReusableView() }
+            header.configure(with: MainSectionType.recommendations.title)
+            return header
+        case .sweetMood:
+            guard let header = collectionView.dequeueReusableSupplementaryView(
+                ofKind: UICollectionView.elementKindSectionHeader,
+                withReuseIdentifier: HeaderCollectionReusableView.identifier,
+                for: indexPath
+            ) as? HeaderCollectionReusableView else { return UICollectionReusableView() }
+            header.configure(with: MainSectionType.sweetMood.title)
+            return header
+        default: return UICollectionReusableView()
         }
     }
 }

@@ -43,4 +43,24 @@ enum Images {
         case mixTen
         case mixEleven
     }
+
+    enum Recommendations: String {
+        case productOne
+        case productTwo
+        case productThree
+        case productFour
+        case productFive
+        case productSix
+    }
+
+    enum SweetMood: String {
+        case sweetProductOne
+        case sweetProductTwo
+        case sweetProductThree
+        case sweetProductFour
+        case sweetProductFive
+        case sweetProductSix
+        case sweetProductSeven
+        case sweetProductEight
+    }
 }

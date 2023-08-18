@@ -148,4 +148,3 @@ private extension CustomNavigationBar {
         static let locationTitle = "Москва, Москва и Московская область"
     }
 }
-

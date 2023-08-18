@@ -13,7 +13,7 @@ struct BonusModel {
 }
 
 extension BonusModel {
-    static func createMockData() -> BonusModel {
-        BonusModel(image: "bonus", value: 123)
+    static func createMockData() -> [BonusModel] {
+        [BonusModel(image: "bonus", value: 123)]
     }
 }
