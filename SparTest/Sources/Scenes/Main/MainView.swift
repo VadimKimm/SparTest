@@ -13,6 +13,14 @@ final class MainView: UIView {
 
     private let navigationBar = CustomNavigationBar()
 
+    lazy var collectionView: UICollectionView = {
+        let collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: LayoutHandler.createMainLayout()
+        )
+        return collectionView
+    }()
+
     // MARK: - Settings
 
     override init(frame: CGRect) {
@@ -21,7 +29,8 @@ final class MainView: UIView {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        commonInit()
     }
 
     private func commonInit() {
@@ -34,6 +43,7 @@ final class MainView: UIView {
 
     private func setupHierarchy() {
         addSubview(navigationBar)
+        addSubview(collectionView)
     }
 
     private func setupLayout() {
@@ -42,6 +52,14 @@ final class MainView: UIView {
             navigationBar.topAnchor.constraint(equalTo: topAnchor, constant: Metrics.navigationBarTopOffset),
             navigationBar.leadingAnchor.constraint(equalTo: leadingAnchor),
             navigationBar.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: Metrics.collectionViewTopOffset),
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 
@@ -55,5 +73,6 @@ final class MainView: UIView {
 extension MainView {
     enum Metrics {
         static let navigationBarTopOffset: CGFloat = 55
+        static let collectionViewTopOffset: CGFloat = 5
     }
 }
