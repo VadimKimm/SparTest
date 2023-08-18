@@ -155,7 +155,7 @@ final class LayoutHandler {
         section.contentInsets = NSDirectionalEdgeInsets(
             top: 20,
             leading: 10,
-            bottom: 10,
+            bottom: 20,
             trailing: 10
         )
 

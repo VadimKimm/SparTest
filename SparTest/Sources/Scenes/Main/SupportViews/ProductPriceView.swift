@@ -12,7 +12,7 @@ final class ProductPriceView: UIView {
     // MARK: - Configuration
 
     func configure(with model: ProductModel) {
-        priceLabel.text = "\(model.price)"
+        priceLabel.text =  String(format: "%.2f", model.price)
 
         guard case let .superPrice(newPrice) = model.promotionType else {
             promotionPriceLabel.isHidden = true
@@ -20,7 +20,7 @@ final class ProductPriceView: UIView {
         }
 
         promotionPriceLabel.attributedText = NSAttributedString(
-            string: "\(newPrice)",
+            string: String(format: "%.2f", newPrice),
             attributes: [.strikethroughStyle: NSUnderlineStyle.single.rawValue]
         )
     }
