@@ -59,7 +59,7 @@ final class TabBarController: UITabBarController {
         viewControllers = tabBarItems.map {
             switch $0 {
             case .main:
-                let viewController = MainViewController()
+                let viewController = MainModuleConfigurator().configure()
                 return wrappedInNavigationController(with: viewController)
             case .catalog:
                 let viewController = createBlankViewController()

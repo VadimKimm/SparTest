@@ -7,10 +7,15 @@
 
 import UIKit
 
+protocol MainViewInput: AnyObject {
+    func reload(with dataSourse: [MainSectionType: Any])
+}
+
 final class MainViewController: UIViewController {
 
     // MARK: - Properties
 
+    var output: MainViewOutput?
     var adapter: MainCollectionViewAdapter?
 
     private lazy var customView: MainView = {
@@ -26,24 +31,20 @@ final class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         setupCollectionViewAdapter()
+        output?.viewDidLoad()
     }
 
     // MARK: - Settings
 
     private func setupCollectionViewAdapter() {
         adapter = MainCollectionViewAdapter(collectionView: customView.collectionView)
-        configureDataSourse()
     }
+}
 
-    private func configureDataSourse() {
-        var dataSource: [MainSectionType: Any] = [:]
-        dataSource[.stories] = StoryModel.createMockData()
-        dataSource[.promotions] = PromotionModel.createMockData()
-        dataSource[.bonus] = BonusModel.createMockData()
-        dataSource[.mixed] = MixModel.createMockData()
-        dataSource[.recommendations] = ProductModel.createMockData()
-        dataSource[.sweetMood] = ProductModel.createSweetMockData()
+// MARK: - MainViewInput
 
-        adapter?.configure(with: dataSource)
+extension MainViewController: MainViewInput {
+    func reload(with dataSourse: [MainSectionType: Any]) {
+        adapter?.configure(with: dataSourse)
     }
 }

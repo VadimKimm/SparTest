@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD5469FE2A8FE9D2000EFEBC /* MainModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5469FD2A8FE9D2000EFEBC /* MainModuleConfigurator.swift */; };
+		DD546A002A8FE9EB000EFEBC /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5469FF2A8FE9EB000EFEBC /* MainPresenter.swift */; };
 		DDF041342A8CC5E500DCB871 /* PromotionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF041332A8CC5E500DCB871 /* PromotionModel.swift */; };
 		DDF041362A8CC91F00DCB871 /* PromotionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF041352A8CC91F00DCB871 /* PromotionCollectionViewCell.swift */; };
 		DDF041392A8CC94F00DCB871 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF041382A8CC94F00DCB871 /* BaseCollectionViewCell.swift */; };
@@ -35,6 +37,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD5469FD2A8FE9D2000EFEBC /* MainModuleConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleConfigurator.swift; sourceTree = "<group>"; };
+		DD5469FF2A8FE9EB000EFEBC /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		DDF041332A8CC5E500DCB871 /* PromotionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionModel.swift; sourceTree = "<group>"; };
 		DDF041352A8CC91F00DCB871 /* PromotionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionCollectionViewCell.swift; sourceTree = "<group>"; };
 		DDF041382A8CC94F00DCB871 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -144,6 +148,8 @@
 			children = (
 				DDFE6AC52A8BCB240003C518 /* Model */,
 				DDFE6ABC2A8A539D0003C518 /* SupportViews */,
+				DD5469FD2A8FE9D2000EFEBC /* MainModuleConfigurator.swift */,
+				DD5469FF2A8FE9EB000EFEBC /* MainPresenter.swift */,
 				DDFE6A9A2A8A41040003C518 /* MainViewController.swift */,
 				DDFE6ABF2A8A73B80003C518 /* MainView.swift */,
 				DDFE6ACB2A8BD1CA0003C518 /* MainCollectionViewAdapter.swift */,
@@ -297,12 +303,14 @@
 				DDFE6A972A8A41040003C518 /* AppDelegate.swift in Sources */,
 				DDFE6AC72A8BCB320003C518 /* StoryModel.swift in Sources */,
 				DDF0414D2A8FDB2E00DCB871 /* MainSectionType.swift in Sources */,
+				DD546A002A8FE9EB000EFEBC /* MainPresenter.swift in Sources */,
 				DDF041362A8CC91F00DCB871 /* PromotionCollectionViewCell.swift in Sources */,
 				DDFE6ACF2A8BD87F0003C518 /* LayoutHandler.swift in Sources */,
 				DDF0414B2A8FB5D600DCB871 /* ProductPriceView.swift in Sources */,
 				DDF041412A8D381400DCB871 /* MixModel.swift in Sources */,
 				DDF041342A8CC5E500DCB871 /* PromotionModel.swift in Sources */,
 				DDF041432A8D4E0900DCB871 /* ProductCollectionViewCell.swift in Sources */,
+				DD5469FE2A8FE9D2000EFEBC /* MainModuleConfigurator.swift in Sources */,
 				DDF041492A8F745800DCB871 /* ProductModel.swift in Sources */,
 				DDF041452A8E1F0500DCB871 /* HeaderCollectionReusableView.swift in Sources */,
 			);

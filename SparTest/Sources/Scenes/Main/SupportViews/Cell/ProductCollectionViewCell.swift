@@ -131,6 +131,7 @@ final class ProductCollectionViewCell: BaseCollectionViewCell {
     override func prepareForReuse() {
         promotionTitle.text = nil
         promotionTitleView.backgroundColor = nil
+        promotionTitleView.isHidden = false
     }
 }
 
